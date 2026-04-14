@@ -1,0 +1,716 @@
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================= */
+:root {
+    --bg-dark: #0a0a0a;
+    --panel-bg: #141414; 
+    --card-bg: #1c1c1c;
+    --text-main: #e0e0e0;
+    --text-muted: #888;
+    --accent-blue: #3498db;
+    --accent-orange: #e67e22;
+    --slider-track: #2c2c2c;
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    background: radial-gradient(circle at top, #1a1a1a 0%, #0a0a0a 100%);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Evita scroll lateral por los anchos de 95% */
+}
+
+/* --- Animación de entrada --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   CABECERA (PERFIL) Y DATOS DE CONTACTO
+   ========================================= */
+.main-header {
+    width: 95%; 
+    max-width: 1600px; 
+    padding: 60px 30px; 
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start; 
+    animation: fadeInUp 0.8s ease forwards;
+    box-sizing: border-box; /* Importante añadir esto */
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+                linear-gradient(to right, var(--accent-blue), #8e44ad) border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+}
+
+.info-personal h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-data {
+    margin-top: 8px;
+    color: var(--text-muted);
+}
+
+.contact-data p {
+    margin: 4px 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-data i {
+    color: var(--accent-blue);
+    width: 18px;
+}
+.contact-data p.social-line {
+    margin-top: 10px;
+}
+
+.social-line a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    padding: 4px 0;
+}
+
+/* Los iconos de DevIcon suelen ser más grandes, los ajustamos al texto */
+.social-line a i {
+    font-size: 1.1rem; 
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+/* Efectos al pasar el ratón */
+.social-line a:hover {
+    color: #fff;
+    transform: translateX(5px); /* Pequeño desplazamiento a la derecha */
+}
+
+.social-line a:hover i.devicon-linkedin-plain {
+    color: #0077b5; /* Azul oficial de LinkedIn */
+}
+
+.social-line a:hover i.devicon-github-original {
+    color: #fff;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+}
+/* =========================================
+   SECCIÓN PERFIL PROFESIONAL (NUEVA)
+   ========================================= */
+.about-section {
+    width: 95%;
+    max-width: 1600px;
+    margin: 20px auto;
+    padding: 30px;
+    background: var(--panel-bg);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-sizing: border-box;
+    animation: fadeInUp 0.8s ease forwards 0.1s;
+    opacity: 0;
+}
+
+.about-content h2 {
+    color: var(--accent-blue);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.about-content p {
+    line-height: 1.6;
+    color: var(--text-main);
+    width: 100%; 
+    max-width: 100%; 
+    margin: 0;
+    text-align: justify; 
+}
+
+.about-content strong {
+    color: var(--accent-blue);
+}
+.github-invite a {
+    color: #ffffff; /* Blanco puro */
+    text-decoration: underline; /* Mantiene el subrayado para que se sepa que es un link */
+    font-weight: bold; /* Para que resalte un poco */
+    transition: color 0.3s ease;
+}
+
+/* Para que cambie de color cuando se pase el ratón por encima */
+.github-invite a:hover {
+    color: var(--accent-blue); /* O el color que prefieras al pasar el cursor */
+}
+/* =========================================
+   SECCIÓN TECH STACK 
+   ========================================= */
+.tech-stack {
+    width: 95%;
+    max-width: 1600px;
+    padding: 30px;
+    background: var(--panel-bg);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    margin: 0 auto 50px auto;
+    animation: fadeInUp 0.8s ease forwards 0.2s;
+    opacity: 0;
+    box-sizing: border-box;
+}
+
+.tech-stack h2 {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px; /* Más aire entre elementos */
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px; /* Aumentado para que quepan nombres largos */
+    gap: 15px; /* Más espacio entre icono y texto */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tech-item i {
+    font-size: 3.5rem; /* ¡Mucho más grande! Antes era 2.4rem */
+    color: #555; /* Color base un poco más claro para que se vea mejor */
+    transition: all 0.3s ease;
+}
+
+.tech-item span {
+    font-size: 0.85rem; /* Letra más legible */
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* --- Efecto hover potenciado --- */
+.tech-item:hover i {
+    color: var(--accent-blue);
+    transform: scale(1.1);
+    text-shadow: 0 0 25px rgba(52, 152, 219, 0.7);
+}
+
+.tech-item:hover span {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Colores MotoGP/Python */
+.tech-item[title*="Python"]:hover i,
+.tech-item[title*="Raspberry"]:hover i,
+.tech-item[title*="Terminal"]:hover i {
+    color: var(--accent-orange);
+    text-shadow: 0 0 20px rgba(230, 126, 34, 0.5);
+}
+
+/* =========================================
+   SECCIÓN TRAYECTORIA (ESCALONADA)
+   ========================================= */
+.timeline-section {
+    width: 95%;
+    max-width: 1600px;
+    padding: 60px 40px;
+    background: rgba(20, 20, 20, 0.4);
+    border-radius: 30px;
+    border: 1px solid var(--glass-border);
+    margin: 0 auto 50px auto;
+    animation: fadeInUp 0.8s ease forwards 0.4s;
+    opacity: 0;
+    box-sizing: border-box;
+}
+
+.timeline-section h2 {
+    margin-bottom: 80px;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+.timeline-container {
+    position: relative;
+    width: 100%;
+    height: 450px; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.timeline-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    background: var(--slider-track);
+    outline: none;
+    position: absolute;
+    top: 50%;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.timeline-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 3px solid var(--accent-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.8);
+}
+
+.timeline-years {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 52%; 
+    color: #444;
+    font-weight: 800;
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+
+/* --- AJUSTE DE ETIQUETAS Y ESCALONADO --- */
+.point {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+}
+
+.connector {
+    position: absolute;
+    width: 1px;
+    left: 50%;
+    transition: all 0.4s ease;
+}
+
+.label {
+    position: absolute;
+    width: 160px; 
+    font-size: 0.8rem;
+    font-weight: 600;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.3;
+    text-align: center;
+    line-height: 1.3;
+    transition: 0.4s;
+}
+
+/* Nivel estándar */
+.point.academic .connector { 
+    bottom: 8px; height: 60px; 
+    background: linear-gradient(to top, var(--accent-blue), transparent);
+}
+.point.academic .label { bottom: 75px; color: var(--accent-blue); }
+
+/* Nivel Alto (Clase .alt-level) */
+.point.academic.alt-level .connector { height: 140px; }
+.point.academic.alt-level .label { bottom: 155px; }
+
+/* Trabajo Nivel estándar */
+.point.work .connector { 
+    top: 8px; height: 60px; 
+    background: linear-gradient(to bottom, var(--accent-orange), transparent);
+}
+.point.work .label { top: 75px; color: var(--accent-orange); }
+
+/* Trabajo Nivel Bajo (Clase .alt-level) */
+.point.work.alt-level .connector { height: 140px; }
+.point.work.alt-level .label { top: 155px; }
+
+/* ESTADO ACTIVO */
+.point.active .label { opacity: 1; transform: translateX(-50%) scale(1.1); font-weight: 800; }
+.point.active .dot { background: #fff; box-shadow: 0 0 15px #fff; transform: translate(-50%, -50%) scale(1.6); }
+.point.active .connector { width: 2px; opacity: 1; }
+
+/* =========================================
+   TARJETA DE DETALLES (VIEWER)
+   ========================================= */
+.detail-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%; 
+    max-width: 100%; /* Ocupa todo el panel */
+    box-sizing: border-box;
+    border: 1px solid var(--glass-border);
+    border-left: 5px solid var(--accent-blue);
+    min-height: 160px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.detail-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.detail-card p {
+    margin: 0;
+    line-height: 1.8;
+    color: #bbb;
+    font-size: 1.1rem;
+}
+.extra-info-section {
+    width: 95%;
+    max-width: 1600px;
+    margin: 40px auto 100px auto; /* Margen inferior amplio para terminar la web */
+    animation: fadeInUp 0.8s ease forwards 0.6s;
+    opacity: 0;
+}
+
+.extra-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.extra-card {
+    background: var(--panel-bg);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease;
+}
+
+.extra-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+}
+
+.extra-card h3 {
+    color: var(--accent-blue);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.extra-card p {
+    font-size: 0.9rem; /* Un pelín más pequeño para que se vea más técnico */
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: var(--text-muted); /* Texto base más suave */
+}
+
+.extra-card p strong {
+    color: var(--text-main); /* Resaltamos solo el concepto clave */
+    display: block; /* Ponemos el título de la habilidad en su propia línea para que sea escaneable */
+    margin-bottom: 2px;
+}
+
+/* Efecto visual para los iconos de las tarjetas */
+.extra-card h3 i {
+    transition: transform 0.3s ease;
+}
+
+.extra-card:hover h3 i {
+    transform: rotate(15deg) scale(1.2);
+    color: var(--accent-orange); /* Un toque de color diferente al pasar el ratón */
+}
+.lang-list {
+    list-style: none;
+    padding: 0;
+}
+
+.lang-list li strong {
+    color: var(--accent-blue);
+}
+/* =========================================
+   SECCIÓN INTERESES (BENTO GRID + CAROUSEL)
+   ========================================= */
+.intereses-section {
+    width: 95%;
+    max-width: 1600px;
+    margin: 60px auto 120px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.intereses-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.intereses-header h2 {
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.intereses-header p {
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 10px auto;
+}
+
+/* CONFIGURACIÓN DE LA BENTO GRID */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-auto-rows: 220px; 
+    gap: 25px;
+    perspective: 1000px;
+}
+
+/* ESTILO BASE DE LAS TARJETAS */
+.intereses-card {
+    background: var(--panel-bg);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    padding: 25px;
+    z-index: 1;
+}
+
+/* CONTROL DE TAMAÑOS (Tu elección vertical) */
+.card-large {
+    grid-column: span 2;
+    grid-row: span 3;
+}
+
+.card-medium {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.card-small {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* --- ELEMENTOS VISUALES (CARRUSEL E IMÁGENES) --- */
+.card-carousel, .card-image {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.slide, .card-image {
+    position: absolute;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Animación Carrusel (5 fotos) */
+.slide {
+    opacity: 0;
+    animation: bentoCarousel 20s infinite;
+}
+
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 4s; }
+.slide:nth-child(3) { animation-delay: 8s; }
+.slide:nth-child(4) { animation-delay: 12s; }
+.slide:nth-child(5) { animation-delay: 16s; }
+
+@keyframes bentoCarousel {
+    0%, 20% { opacity: 1; transform: scale(1); }
+    25%, 100% { opacity: 0; transform: scale(1.05); }
+}
+
+/* Capas de degradado para lectura */
+.card-carousel::after, .card-image::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    z-index: 2;
+}
+
+/* CONTENIDO (Texto e Iconos) */
+.card-content {
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    transform: translateZ(30px);
+    pointer-events: none;
+}
+
+.card-content i {
+    font-size: 1.8rem;
+    color: var(--accent-blue);
+    margin-bottom: 15px;
+}
+
+/* --- MODIFICADORES ESPECÍFICOS (IoT y CINE) --- */
+
+/* 1. ESTILO BASE DE LA TARJETA IOT (Fondo blanco) */
+.iot-card {
+    background-color: #ffffff !important; /* Blanco puro obligatorio */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alineamos el contenido de texto abajo */
+    padding: 25px;
+    z-index: 1; /* Un z-index base bajo */
+}
+
+/* 2. EL LOGO DE LA CASA (En .card-image) */
+.iot-card .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain !important; /* El logo no se corta */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white; /* Aseguramos fondo blanco en el logo */
+    transition: all 0.5s ease; /* Transición suave */
+    z-index: 2; /* Encima del fondo de la tarjeta */
+}
+
+/* IMPORTANTE: Quitamos el degradado oscuro por defecto para que sea blanco limpio */
+.iot-card .card-image::after {
+    background: none !important; 
+}
+
+/* 3. EFECTO HOVER: EL LOGO DESAPARECE */
+/* Cuando pasamos el ratón por la tarjeta (.iot-card), el logo (.card-image) se oculta */
+.iot-card:hover .card-image {
+    opacity: 0 !important; /* Desaparece por completo */
+    visibility: hidden;     /* Asegura que no estorbe */
+    transform: scale(1.1); /* Ligero zoom out al desaparecer */
+}
+
+/* 4. EL CONTENIDO DE TEXTO (.card-content) */
+.iot-card .card-content {
+    position: relative;
+    z-index: 10; /* Siempre encima del logo para que el hover funcione */
+    color: #1a1a1a !important; /* Negro casi puro para máximo contraste */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ocupa toda la tarjeta */
+}
+
+/* ESTILO DEL TEXTO (Oculto por defecto) */
+.iot-card .card-content h3, 
+.iot-card .card-content p {
+    opacity: 0; /* Invisible por defecto */
+    transform: translateY(15px); /* Un poco abajo */
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    color: #1a1a1a !important; /* Forzamos color oscuro */
+}
+
+/* EFECTO HOVER: EL TEXTO APARECE */
+/* Cuando pasamos el ratón por la tarjeta (.iot-card), el texto (.card-content) aparece */
+.iot-card:hover .card-content h3, 
+.iot-card:hover .card-content p {
+    opacity: 1; /* Se vuelve visible */
+    transform: translateY(0); /* Sube a su sitio */
+}
+
+/* 5. EL ICONO AZUL (La casita pequeña) */
+.iot-card .card-content i {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    margin: 0;
+    font-size: 1.5rem; 
+    transition: all 0.4s ease;
+    color: var(--accent-blue) !important;
+}
+
+/* EFECTO HOVER: EL ICONO AZUL REACCIONA */
+.iot-card:hover .card-content i {
+    transform: translateY(-5px); /* Sube un poco al aparecer el texto */
+}
+
+/* 2. Cine: Ajuste para fondo desenfocado */
+.cine-card .card-image::after {
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 100%) !important;
+}
+
+/* EFECTOS HOVER GENERALES */
+.intereses-card:hover {
+    transform: rotateY(5deg) rotateX(5deg) scale(1.02);
+    border-color: var(--accent-blue);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+    .card-large, .card-medium, .card-small { grid-column: span 1; grid-row: span 1; }
+}
