@@ -278,16 +278,17 @@ body {
 
 .timeline-container {
     position: relative;
-    width: 100%;
+    width: 85%; 
     height: 450px; 
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
+    padding-right: 120px; /* Espacio reservado para la palabra */
+    box-sizing: border-box;
 }
-
 .timeline-slider {
     -webkit-appearance: none;
-    width: 100%;
+    width: 100%; /* Ocupará el 100% del 85% del padre */
     height: 2px;
     background: var(--slider-track);
     outline: none;
@@ -309,23 +310,49 @@ body {
 
 .timeline-years {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
     position: absolute;
     top: 52%; 
+    pointer-events: none;
+    /* Eliminamos display: flex para que no empuje el texto abajo */
+    display: block; 
+}
+
+/* El año 2010 a la izquierda */
+.timeline-years span:first-child {
+    position: absolute;
+    left: 0;
     color: #444;
     font-weight: 800;
     font-size: 0.85rem;
-    pointer-events: none;
 }
 
-/* --- AJUSTE DE ETIQUETAS Y ESCALONADO --- */
+/* La palabra ACTUALIDAD - Forzada a la derecha */
+.actualidad-fix {
+    position: absolute;
+    /* Esto la saca a la derecha de la línea de 85% */
+    right: -110px; 
+    top: 0;
+    color: var(--accent-orange) !important; /* Forzamos el color naranja */
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap; /* Prohibido saltar de línea */
+}
+
+/* --- ELEMENTOS DE LA LÍNEA (PUNTOS Y ETIQUETAS) --- */
 .point {
     position: absolute;
     top: 50%;
     z-index: 5;
     pointer-events: none;
 }
+
+/* El último punto (Actualidad) necesita posición relativa para su etiqueta lateral */
+.point[style*="left: 100%"] {
+    position: absolute; /* Mantiene su lugar en la línea */
+}
+
 
 .dot {
     width: 10px;
@@ -359,29 +386,27 @@ body {
     transition: 0.4s;
 }
 
-/* Nivel estándar */
+/* --- NIVELES ESCALONADOS --- */
+
+/* Estilo Académico (Arriba) */
 .point.academic .connector { 
     bottom: 8px; height: 60px; 
     background: linear-gradient(to top, var(--accent-blue), transparent);
 }
 .point.academic .label { bottom: 75px; color: var(--accent-blue); }
-
-/* Nivel Alto (Clase .alt-level) */
 .point.academic.alt-level .connector { height: 140px; }
 .point.academic.alt-level .label { bottom: 155px; }
 
-/* Trabajo Nivel estándar */
+/* Estilo Laboral (Abajo) */
 .point.work .connector { 
     top: 8px; height: 60px; 
     background: linear-gradient(to bottom, var(--accent-orange), transparent);
 }
 .point.work .label { top: 75px; color: var(--accent-orange); }
-
-/* Trabajo Nivel Bajo (Clase .alt-level) */
 .point.work.alt-level .connector { height: 140px; }
 .point.work.alt-level .label { top: 155px; }
 
-/* ESTADO ACTIVO */
+/* ESTADO ACTIVO (Hito seleccionado) */
 .point.active .label { opacity: 1; transform: translateX(-50%) scale(1.1); font-weight: 800; }
 .point.active .dot { background: #fff; box-shadow: 0 0 15px #fff; transform: translate(-50%, -50%) scale(1.6); }
 .point.active .connector { width: 2px; opacity: 1; }
@@ -394,12 +419,13 @@ body {
     padding: 40px;
     border-radius: 20px;
     width: 100%; 
-    max-width: 100%; /* Ocupa todo el panel */
+    max-width: 100%;
     box-sizing: border-box;
     border: 1px solid var(--glass-border);
-    border-left: 5px solid var(--accent-blue);
+    border-left: 5px solid var(--accent-blue); /* Se actualiza dinámicamente por JS */
     min-height: 160px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease, border-left 0.3s ease;
 }
 
 .detail-card h3 {
@@ -414,10 +440,14 @@ body {
     color: #bbb;
     font-size: 1.1rem;
 }
+
+/* =========================================
+   INFORMACIÓN EXTRA
+   ========================================= */
 .extra-info-section {
     width: 95%;
     max-width: 1600px;
-    margin: 40px auto 100px auto; /* Margen inferior amplio para terminar la web */
+    margin: 40px auto 100px auto;
     animation: fadeInUp 0.8s ease forwards 0.6s;
     opacity: 0;
 }
@@ -433,7 +463,7 @@ body {
     padding: 30px;
     border-radius: 20px;
     border: 1px solid var(--glass-border);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .extra-card:hover {
@@ -453,27 +483,27 @@ body {
 }
 
 .extra-card p {
-    font-size: 0.9rem; /* Un pelín más pequeño para que se vea más técnico */
+    font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 12px;
-    color: var(--text-muted); /* Texto base más suave */
+    color: var(--text-muted);
 }
 
 .extra-card p strong {
-    color: var(--text-main); /* Resaltamos solo el concepto clave */
-    display: block; /* Ponemos el título de la habilidad en su propia línea para que sea escaneable */
+    color: var(--text-main);
+    display: block;
     margin-bottom: 2px;
 }
 
-/* Efecto visual para los iconos de las tarjetas */
 .extra-card h3 i {
     transition: transform 0.3s ease;
 }
 
 .extra-card:hover h3 i {
     transform: rotate(15deg) scale(1.2);
-    color: var(--accent-orange); /* Un toque de color diferente al pasar el ratón */
+    color: var(--accent-orange);
 }
+
 .lang-list {
     list-style: none;
     padding: 0;
