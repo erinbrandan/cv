@@ -129,7 +129,7 @@ body {
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
 }
 /* =========================================
-   SECCIÓN PERFIL PROFESIONAL (NUEVA)
+   SECCIÓN PERFIL PROFESIONAL 
    ========================================= */
 .about-section {
     width: 95%;
@@ -331,8 +331,8 @@ body {
     position: absolute;
     /* Esto la saca a la derecha de la línea de 85% */
     right: -110px; 
-    top: 0;
-    color: var(--accent-orange) !important; /* Forzamos el color naranja */
+    top: -20px;
+    color: #444; 
     font-weight: 800;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -412,39 +412,74 @@ body {
 .point.active .connector { width: 2px; opacity: 1; }
 
 /* =========================================
-   TARJETA DE DETALLES (VIEWER)
+   TARJETA DE DETALLES 
    ========================================= */
 .detail-card {
     background: var(--card-bg);
-    padding: 40px;
+    padding: 30px 40px; /* Un poco más de aire lateral */
     border-radius: 20px;
     width: 100%; 
     max-width: 100%;
     box-sizing: border-box;
     border: 1px solid var(--glass-border);
-    border-left: 5px solid var(--accent-blue); /* Se actualiza dinámicamente por JS */
-    min-height: 160px;
+    border-left: 5px solid var(--accent-blue); 
+    min-height: 180px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     transition: opacity 0.3s ease, border-left 0.3s ease;
 }
 
-.detail-card h3 {
-    margin: 0 0 15px 0;
-    font-size: 1.8rem;
-    color: #fff;
+/* Contenedor Flex para: Logo + Fecha + Título */
+.cabecera-experiencia {
+    display: flex;
+    align-items: center; /* Centra el bloque de texto respecto al logo */
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.detail-card p {
+.logo-experiencia {
+    width: 100px;  
+    height: 100px;
+    object-fit: contain;
+    background: white;
+    padding: 5px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+.textos-columna {
+    display: flex;
+    flex-direction: column; /* Apila fecha sobre título */
+    justify-content: center; /* Los centra verticalmente respecto al logo */
+    gap: 4px; /* Espacio mínimo entre fecha y título */
+}
+
+.fecha-experiencia {
+    color: var(--accent-orange);
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
     margin: 0;
-    line-height: 1.8;
-    color: #bbb;
-    font-size: 1.1rem;
 }
 
+.titulo-experiencia {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+    line-height: 1.2;
+}
+
+/* El párrafo de descripción que va debajo */
+.descripcion-experiencia {
+    margin: 0;
+    line-height: 1.7;
+    color: #ccc;
+    font-size: 1.05rem;
+}
 /* =========================================
-   INFORMACIÓN EXTRA
+   INFORMACIÓN EXTRA (GRID DE TARJETAS)
    ========================================= */
-.extra-info-section {
+   .extra-info-section {
     width: 95%;
     max-width: 1600px;
     margin: 40px auto 100px auto;
@@ -512,6 +547,7 @@ body {
 .lang-list li strong {
     color: var(--accent-blue);
 }
+
 /* =========================================
    SECCIÓN INTERESES (BENTO GRID + CAROUSEL)
    ========================================= */

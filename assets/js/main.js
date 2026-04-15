@@ -2,39 +2,92 @@
  * Lógica para el CV Interactivo - Escala 2010-2027
  * Dinamismo por proximidad conservando descripciones originales.
  */
-
-// 1. DICCIONARIO DE DATOS (Porcentajes recalculados para inicio en 2010)
 const timelineData = [
     {
-        "percent": 17.6, // 2013 en una escala 2010-2027
+        "percent": 17.6,
         "start": "Sept 2013",
         "end": "Jun 2015",
         "title": "Ciclo Medio Cocina y Gastronomía",
-        "desc": "Especialización en técnicas de cocina profesional y gestión de materias primas. Desarrollo de habilidades de trabajo bajo presión y organización.",
+        "desc": `
+            <div class="cabecera-experiencia">
+                <img src="assets/img/cifp.jpg" class="logo-experiencia" alt="Logo CMCCG">
+            <div class="textos-columna">  
+                <span class="fecha-experiencia">Sept 2013 — Jun 2015</span>
+                <h3 class="titulo-experiencia">Ciclo Medio Cocina y Gastronomía</h3>
+                <span style="color: #bbb; font-size: 0.85rem; font-weight: 500;">
+                        CIFP Manuel Antonio | Vigo
+                    </span>
+            </div>
+        </div>
+            <p class="descripcion-experiencia">Especialización en técnicas de cocina profesional y gestión de materias primas. Desarrollo de habilidades de trabajo bajo presión y organización.</p>
+        `,
         "color": "#3498db"
     },
     {
-        "percent": 29.4, // 2015
+        "percent": 29.4,
         "start": "Sept 2015",
         "end": "Jun 2017",
         "title": "Ciclo Superior de Dirección de Cocina",
-        "desc": "Gestión integral de establecimientos hosteleros, control de costes, diseño de menús y liderazgo de brigadas de cocina.",
+        "desc": `
+            <div class="cabecera-experiencia">
+                <img src="assets/img/cifp.jpg" class="logo-experiencia" alt="Logo CSDC">
+            <div class="textos-columna">    
+                <span class="fecha-experiencia">Sept 2015 — Jun 2017</span>
+                <h3 class="titulo-experiencia">Ciclo Superior de Dirección de Cocina</h3>
+                <span style="color: #bbb; font-size: 0.85rem; font-weight: 500;">
+                        CIFP Carlos Oroza | Pontevedra
+                </span>
+            </div>
+        </div>
+            <p class="descripcion-experiencia">Gestión integral de establecimientos hosteleros, control de costes, diseño de menús y liderazgo de brigadas de cocina.</p>
+        `,
         "color": "#3498db"
     },
     {
-        "percent": 47.0, // 2018
+        "percent": 47.0,
         "start": "Ene 2018",
         "end": "Ago 2018",
-        "title": "Disfrutar Barcelona",
-        "desc": "Ayudante de creatividad en Disfrutar (Barcelona). Participación activa en el proceso creativo de uno de los mejores restaurantes del mundo (3 estrellas Michelin).",
+        "title": "Disfrutar",
+        "desc": `
+            <div class="cabecera-experiencia">
+                <img src="assets/img/disfrutar.png" class="logo-experiencia" alt="Logo Disfrutar">
+                <div class="textos-columna">
+                    <span class="fecha-experiencia">ENE 2018 — AGO 2018</span>
+                    <h3 class="titulo-experiencia">Disfrutar</h3>
+                    <span style="color: #e67e22; font-size: 0.85rem; font-weight: bold; letter-spacing: 0.5px;">
+                        Nº1 The World's 50 Best Restaurants | 3 Estrellas Michelin | 3 Soles Repsol
+                    </span>
+                </div>
+            </div>
+            <div class="timeline-detail-content">
+                <p class="descripcion-experiencia" style="margin-bottom: 12px;">
+                    Ayudante de cocina en resturante <strong>Disfrutar</strong>, colaborando en uno de los proyectos gastronómicos más influyentes a nivel global.
+                </p>
+                <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; line-height: 1.6; color: #ccc;">
+                    <li><strong>• Experiencia Multidisciplinar:</strong> Gestión y ejecución operativa en diversas partidas clave.</li>
+                    <li><strong>• I+D y Creatividad:</strong> Participación activa en la partida de <strong>Creatividad</strong>, colaborando en el desarrollo de nuevas técnicas y conceptos gastronómicos.</li>
+                    <li><strong>• Eventos Externos:</strong> Apoyo logístico y técnico en la gestión y realización de ponencias profesionales fuera del restaurante, representando la identidad y metodología del establecimiento.</li>
+                </ul>
+            </div>
+        `,
         "color": "#e67e22"
     },
     {
-        "percent": 82.3, // 2024
+        "percent": 82.3,
         "start": "Ene 2024",
         "end": "Feb 2026",
         "title": "Ciclo Superior DAM",
         "desc": `
+            <div class="cabecera-experiencia">
+                <img src="assets/img/IFP.png" class="logo-experiencia" alt="Logo DAM">
+                <div class="textos-columna">  
+                    <span class="fecha-experiencia">Ene 2024 — Feb 2026</span>
+                    <h3 class="titulo-experiencia">Ciclo Superior DAM</h3>
+                    <span style="color: #bbb; font-size: 0.85rem; font-weight: 500;">
+                        IFP Innovación y Formación Profesional (Grupo Planeta) | Barcelona
+                    </span>
+                </div>
+            </div>
             <div class="timeline-detail-content">
                 <h4 style="color: #3498db; margin-bottom: 8px;">Ciclo Superior en Desarrollo de Aplicaciones Multiplataforma (DAM) </h4>
                 <p style="font-size: 0.9rem; margin-bottom: 12px;">
@@ -57,13 +110,20 @@ const timelineData = [
         "color": "#3498db"
     },
     {
-        "percent": 94.1, // 2026
+        "percent": 94.1,
         "start": "Feb 2026",
         "end": "Feb 2026",
         "title": "Proyecto Final DAM",
         "desc": `
+            <div class="cabecera-experiencia">
+                <img src="assets/img/wellnessgo.png" class="logo-experiencia" alt="Logo Proyecto">
+                <div class="textos-columna">
+                    <span class="fecha-experiencia">Feb 2026</span>
+                    <h3 class="titulo-experiencia">Proyecto Final DAM</h3>
+                </div>
+            </div>
             <div class="timeline-detail-content">
-                <h4 style="color: #e67e22; margin: 15px 0 8px 0;">Proyecto Destacado: WellnessGo</h4>
+                <h4 style="color: #3498db; margin: 15px 0 8px 0;">Proyecto Destacado: WellnessGo</h4>
                 <p style="font-size: 0.9rem;">
                     Aplicación orientada a la conexión en tiempo real entre pacientes y profesionales de la salud, incorporando gestión inteligente de agendas y validación de documentación.
                 </p>
@@ -84,11 +144,20 @@ const timelineData = [
         "color": "#3498db"
     },
     {
-        "percent": 100, // 2027 / Actualidad
+        "percent": 100,
         "start": "Mar 2026",
         "end": "Actualidad",
         "title": "MotoGP Sports",
-        "desc": "Desarrollo de sistemas críticos y mantenimiento de infraestructuras IoT en tiempo real con Debian.",
+        "desc": `
+            <div class="cabecera-experiencia">
+                <img src="assets/img/motoGP.png" class="logo-experiencia" alt="Logo MotoGP">
+                <div class="textos-columna">
+                    <span class="fecha-experiencia">Mar 2026 — Actualidad</span>
+                    <h3 class="titulo-experiencia">MotoGP Sports Entertainment Group</h3>
+                </div>
+            </div>
+            <p class="descripcion-experiencia">Desarrollo de sistemas críticos y mantenimiento de infraestructuras IoT en tiempo real con Debian.</p>
+        `,
         "color": "#e67e22"
     }
 ];
@@ -133,17 +202,14 @@ function updateTimeline() {
         // Animación de salida y entrada del visor
         viewer.style.opacity = '0';
         
-        setTimeout(() => {
-            const dateLabel = info.start === info.end ? info.start : `${info.start} — ${info.end}`;
+       setTimeout(() => {
+            // Eliminamos la lógica de dateLabel y los elementos <h3>
+            // para evitar la duplicidad, ya que ahora los incluimos en info.desc
             
             viewer.innerHTML = `
-                <div style="margin-bottom: 10px;">
-                    <span style="color: ${info.color}; font-weight: bold; font-size: 0.85rem; text-transform: uppercase;">
-                        ${dateLabel}
-                    </span>
+                <div class="detail-card-inner">
+                    ${info.desc}
                 </div>
-                <h3>${info.title}</h3>
-                <div>${info.desc}</div>
             `;
             
             viewer.style.borderLeft = `5px solid ${info.color}`;
